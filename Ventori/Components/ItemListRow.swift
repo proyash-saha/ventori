@@ -16,12 +16,12 @@ struct ItemListRow: View {
     var body: some View {
         HStack {
             if item.tagColorIndex != -1 {
-                RoundedRectangle(cornerRadius: 40)
+                RoundedRectangle(cornerRadius: 50)
                     .frame(width: 10, height: 30)
                     .foregroundColor(tagColors[Int(item.tagColorIndex)])
             }
             else {
-                RoundedRectangle(cornerRadius: 40)
+                RoundedRectangle(cornerRadius: 50)
                     .frame(width: 10, height: 30)
                     .hidden()
             }
