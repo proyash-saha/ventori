@@ -1,5 +1,5 @@
 //
-//  MainScreen.swift
+//  HomeView.swift
 //  Ventori
 //
 //  Created by Proyash Saha on 2021-10-26.
@@ -10,6 +10,7 @@ import SwiftUI
 struct HomeView: View {
     
     @Environment(\.presentationMode) var presentation
+    @Environment(\.colorScheme) var colorScheme
     @Environment(\.managedObjectContext) var moc
 
     @FetchRequest(entity: ItemCoreData.entity(), sortDescriptors: [NSSortDescriptor(keyPath: \ItemCoreData.addedOnDate, ascending: false)]) var items: FetchedResults<ItemCoreData>
@@ -23,8 +24,8 @@ struct HomeView: View {
                 ZStack {
                     List {
                         ForEach(items) { item in
-                            NavigationLink(destination: DetailView(item: item, tag: "main")) {
-                                Text(item.name!)
+                            NavigationLink(destination: DetailView(item: item, tag: "main", indexOfItem: items.firstIndex(of: item) ?? -1)) {
+                                ItemListRow(item: item)
                             }
                             .alert(isPresented: self.$showDeleteAlert) {
                                 Alert(title: Text("Do you want to delete this Item?"),
@@ -59,7 +60,7 @@ struct HomeView: View {
                             }
                         }
                         ToolbarItemGroup(placement: .navigationBarTrailing) {
-                            NavigationLink(destination: AddView()) {
+                            NavigationLink(destination: AddUpdateView(purpose: "Add", indexOfItem: -1)) {
                                 Image(systemName: "plus")
                                     .font(Font.system(size: 23, weight: .semibold))
                             }

@@ -1,5 +1,5 @@
 //
-//  AddScreen.swift
+//  AddUpdateView.swift
 //  Ventori
 //
 //  Created by Proyash Saha on 2021-10-26.
@@ -7,14 +7,16 @@
 
 import SwiftUI
 
-struct AddView: View {
+struct AddUpdateView: View {
     
     @Environment(\.presentationMode) var presentation
     @Environment(\.colorScheme) var colorScheme
     @Environment(\.managedObjectContext) var moc
     
     @FetchRequest(entity: ItemCoreData.entity(), sortDescriptors: [NSSortDescriptor(keyPath: \ItemCoreData.addedOnDate, ascending: false)]) var items: FetchedResults<ItemCoreData>
-
+    
+    var purpose: String
+    var indexOfItem: Int
     
     @State private var image: UIImage = UIImage(imageLiteralResourceName: "DefaultItemImage")
     @State private var name: String = ""
@@ -23,7 +25,6 @@ struct AddView: View {
     @State private var expiryDate: Date = Date()
     @State private var costPrice: String = ""
     @State private var sellingPrice: String = ""
-    @State private var tagColor: Color = Color.gray
     @State private var tagColorIndex: Int = -1
     @State private var scannedCode: String = ""
     @State private var category: String = "None"
@@ -42,29 +43,29 @@ struct AddView: View {
     @State private var dateComponent = DateComponents()
     @State private var emptyFields: [String] = []
     @State private var tempString: String = ""
+    @State private var onAppearCount: Int = 0
     
+    @State private var itemToBeUpdated: ItemCoreData = ItemCoreData()
     
     let screenSize = UIScreen.main.bounds
-    
-    init() {
-        UITextView.appearance().backgroundColor = .clear
-    }
     
     var body: some View {
         ScrollView {
             VStack {
                 Group {
-                    Image(uiImage: image)
-                        .resizable()
-                        .clipped()
-                        .clipShape(/*@START_MENU_TOKEN@*/Circle()/*@END_MENU_TOKEN@*/)
-                        .aspectRatio(contentMode: .fill)
-                        .frame(width: 160, height: 160)
-                        .overlay(
-                            CameraButton(showActionSheet: $showActionSheet)
-                                .offset(x: 55, y: 60)
-                        )
-                        .padding(.vertical)
+                    NavigationLink(destination: ImageView(image: image)) {
+                        Image(uiImage: image)
+                            .resizable()
+                            .clipped()
+                            .clipShape(/*@START_MENU_TOKEN@*/Circle()/*@END_MENU_TOKEN@*/)
+                            .aspectRatio(contentMode: .fill)
+                            .frame(width: 130, height: 130)
+                            .overlay(
+                                CameraButton(showActionSheet: $showActionSheet)
+                                    .offset(x: 52, y: 40)
+                            )
+                            .padding(.vertical)
+                    }
                     VStack(alignment: .leading) {
                         Text("Name")
                             .labelStyle1()
@@ -79,6 +80,7 @@ struct AddView: View {
                             TextField("", text: $scannedCode)
                                 .keyboardType(.numberPad)
                                 .textFieldStyle()
+                                .opacity((purpose == "Update" && items[indexOfItem].barCode != "") ? 0.5 : 1)
                             Divider()
                             Button {
                                 self.showBarCodeScanner.toggle()
@@ -91,6 +93,7 @@ struct AddView: View {
                                 BarcodeScanner(showBarCodeScanner: $showBarCodeScanner, scannedCode: $scannedCode, itemIndex: $itemIndex, mode: "add")
                             }
                         }
+                        .disabled(purpose == "Update" && items[indexOfItem].barCode != "")
                     }
                     Divider()
                     HStack() {
@@ -186,47 +189,32 @@ struct AddView: View {
                     Spacer()
                 }
             }
-            .navigationTitle(Text("New Item"))
+            .navigationTitle(purpose == "Add" ? Text("New Item") : Text("Edit Item"))
             .navigationBarTitleDisplayMode(.inline)
             .navigationBarBackButtonHidden(true)
             .navigationBarItems(leading: BackButton())
             .toolbar {
                 ToolbarItemGroup(placement: .navigationBarTrailing) {
                     Button {
-                        emptyFields.removeAll()
-                        tempString = ""
-                        
-                        validateFields()
-                                                
-                        if emptyFields.count != 0 {
-                            if emptyFields.count > 1
-                            {
-                                for i in 0..<emptyFields.count - 1 {
-                                    tempString += emptyFields[i]
-                                    if i != emptyFields.count - 2 {
-                                        tempString += ","
+                            validateFields()
+                            if emptyFields.count != 0 {
+                                showEmptyFieldMessage()
+                            }
+                            else {
+                                if purpose == "Update" {
+                                    updateItem()
+                                }
+                                else if purpose == "Add" {
+                                    if barcodeIsValid(){
+                                        saveItem()
+                                    }
+                                    else{
+                                        showDuplicateBarcodeAlert.toggle()
                                     }
                                 }
-                                tempString += " and "
-                                tempString += emptyFields[emptyFields.count - 1]
                             }
-                            else if emptyFields.count == 1
-                            {
-                                tempString += emptyFields[0]
-                            }
-                            showEmptyFieldAlert.toggle()
-                        }
-                        
-                        else {
-                            if validateBarcode(){
-                                saveItem()
-                            }
-                            else{
-                                showDuplicateBarcodeAlert.toggle()
-                            }
-                        }
                     } label: {
-                        Text("Add")
+                        Text(purpose)
                             .padding(EdgeInsets(top: 5, leading: 10, bottom: 5, trailing: 10))
                             .background(Color.green)
                             .foregroundColor(Color.white)
@@ -267,6 +255,28 @@ struct AddView: View {
             }
             .onAppear {
                 dateComponent.day = 2
+                
+                if purpose == "Update" && onAppearCount == 0{
+                    itemToBeUpdated = items[indexOfItem]
+                    
+                    image = UIImage(data: itemToBeUpdated.image!)!
+                    name = itemToBeUpdated.name!
+                    count = String(itemToBeUpdated.count)
+                    sold = String(itemToBeUpdated.sold)
+                    expiryDate = itemToBeUpdated.expiryDate!
+                    costPrice = String(itemToBeUpdated.costPrice)
+                    sellingPrice = String(itemToBeUpdated.sellingPrice)
+                    tagColorIndex = Int(itemToBeUpdated.tagColorIndex)
+                    scannedCode = itemToBeUpdated.barCode!
+                    category = itemToBeUpdated.category!
+                    notes = itemToBeUpdated.notes!
+                    
+                    if (tagColorIndex != -1) {
+                        tagTapped[tagColorIndex] = true
+                    }
+                    
+                    onAppearCount += 1
+                }
             }
             .alert(isPresented: $showDuplicateBarcodeAlert) {
                 Alert(title: Text("Barcode \"\(scannedCode)\" is already assigned to an item."), dismissButton: .default(Text("OK")))
@@ -277,6 +287,9 @@ struct AddView: View {
 
     
     private func validateFields() {
+        emptyFields.removeAll()
+        tempString = ""
+        
         if name == "" {
             emptyFields.append("Name")
         }
@@ -292,7 +305,27 @@ struct AddView: View {
     }
     
     
-    private func validateBarcode() -> Bool
+    private func showEmptyFieldMessage() {
+        if emptyFields.count > 1
+        {
+            for i in 0..<emptyFields.count - 1 {
+                tempString += emptyFields[i]
+                if i != emptyFields.count - 2 {
+                    tempString += ", "
+                }
+            }
+            tempString += " and "
+            tempString += emptyFields[emptyFields.count - 1]
+        }
+        else if emptyFields.count == 1
+        {
+            tempString += emptyFields[0]
+        }
+        showEmptyFieldAlert.toggle()
+    }
+    
+    
+    private func barcodeIsValid() -> Bool
     {
         var result: Bool = true
         if scannedCode != "" {
@@ -313,7 +346,6 @@ struct AddView: View {
             print("The UIImage could not be converted !")
             return
         }
-        
         tagColorIndex = findSelectedTag()
         
         let item = Item(imageData, name, Int(count) ?? 0, Int(sold) ?? 0, expiryDate, Double(costPrice) ?? 0.0, Double(sellingPrice) ?? 0.0, tagColorIndex, scannedCode, category, notes)
@@ -346,11 +378,47 @@ struct AddView: View {
         self.presentation.wrappedValue.dismiss()
     }
     
+    
+    private func updateItem() {
+
+        guard let imageData = image.pngData() else {
+            print("The UIImage could not be converted !")
+            return
+        }
+        tagColorIndex = findSelectedTag()
+
+        items[indexOfItem].image = imageData
+        items[indexOfItem].name = name
+        items[indexOfItem].count = Int64(count) ?? 0
+        items[indexOfItem].sold = Int64(sold) ?? 0
+        items[indexOfItem].updatedOnDate = Date()
+        items[indexOfItem].expiryDate = expiryDate
+        items[indexOfItem].costPrice = Double(costPrice) ?? 0.0
+        items[indexOfItem].sellingPrice = Double(sellingPrice) ?? 0.0
+        items[indexOfItem].tagColorIndex = Int64(tagColorIndex)
+        items[indexOfItem].barCode = scannedCode
+        items[indexOfItem].category = category
+        items[indexOfItem].notes = notes
+        items[indexOfItem].profit = (Double(sellingPrice)! - Double(costPrice)!) * Double(sold)!
+
+        do {
+          try self.moc.save()
+        } catch {
+            print("Error while updating item!")
+            self.moc.rollback()
+            print("Rolled back!")
+        }
+
+        self.presentation.wrappedValue.dismiss()
+    }
+
+
     private func unselectTags() {
         for index in 0..<tagTapped.count {
             tagTapped[index] = false
         }
     }
+    
     
     private func findSelectedTag() -> Int {
         var index: Int = -1
@@ -361,6 +429,7 @@ struct AddView: View {
         }
         return index
     }
+    
     
     private func hideKeyboard() {
         UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
@@ -385,8 +454,8 @@ extension View {
 }
 
 
-struct AddView_Previews: PreviewProvider {
+struct AddUpdateView_Previews: PreviewProvider {
     static var previews: some View {
-        AddView()
+        AddUpdateView(purpose: "", indexOfItem: -1)
     }
 }

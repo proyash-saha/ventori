@@ -1,5 +1,5 @@
 //
-//  DetailScreen.swift
+//  DetailView.swift
 //  Ventori
 //
 //  Created by Proyash Saha on 2021-10-26.
@@ -17,11 +17,11 @@ struct DetailView: View {
     
     @FetchRequest(entity: SearchCoreData.entity(), sortDescriptors: [NSSortDescriptor(keyPath: \SearchCoreData.date, ascending: false)]) var searchedItemNames: FetchedResults<SearchCoreData>
     
-    @State private var tagColors: [Color] = [.orange, .green, .red, .blue, .yellow, .purple]
-    
     var item: ItemCoreData
     var tag: String
+    var indexOfItem: Int
     
+    @State private var tagColors: [Color] = [.orange, .green, .red, .blue, .yellow, .purple]
     @State private var flag = 0
     @State private var isShowingUpdateView = false
     
@@ -35,22 +35,16 @@ struct DetailView: View {
                     HStack {
                         Spacer()
                         VStack {
-                            Image(uiImage: image)
-                                .resizable()
-                                .clipped()
-                                .clipShape(Circle())
-                                .frame(width: 100, height: 100)
-                                .aspectRatio(contentMode: .fill)
-                            HStack {
-                                if item.tagColorIndex != -1 {
-                                    RoundedRectangle(cornerRadius: 8)
-                                        .frame(width: 10, height: 30)
-                                        .foregroundColor(tagColors[Int(item.tagColorIndex)])
-                                        .padding(.leading, 5)
-                                }
-                                Text("\(item.name!)")
-                                    .font(.system(size: 28, weight: .semibold))
+                            NavigationLink(destination: ImageView(image: image)) {
+                                Image(uiImage: image)
+                                    .resizable()
+                                    .clipped()
+                                    .clipShape(Circle())
+                                    .frame(width: 100, height: 100)
+                                    .aspectRatio(contentMode: .fill)
                             }
+                            Text("\(item.name!)")
+                                .font(.system(size: 28, weight: .semibold))
                         }
                         Spacer()
                     }
@@ -179,7 +173,7 @@ struct DetailView: View {
                         Text("Options")
                     }
                     .background(
-                        NavigationLink(destination: EditView(), isActive: $isShowingUpdateView) {
+                        NavigationLink(destination: AddUpdateView(purpose: "Update", indexOfItem: indexOfItem), isActive: $isShowingUpdateView) {
                             EmptyView()
                         })
                 }
@@ -251,6 +245,6 @@ extension View {
 
 struct DetailView_Previews: PreviewProvider {
     static var previews: some View {
-        DetailView(item: ItemCoreData(), tag: "")
+        DetailView(item: ItemCoreData(), tag: "", indexOfItem: -1)
     }
 }

@@ -8,7 +8,7 @@
 import SwiftUI
 
 @main
-struct InventoriApp: App {
+struct VentoriApp: App {
     
     @Environment(\.scenePhase) var scenePhase
     
@@ -16,6 +16,7 @@ struct InventoriApp: App {
     
     init() {
         UIView.appearance().tintColor = UIColor(Color.green)
+        UITextView.appearance().backgroundColor = .clear
     }
 
     var body: some Scene {

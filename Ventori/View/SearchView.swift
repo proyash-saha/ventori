@@ -1,5 +1,5 @@
 //
-//  SearchScreen.swift
+//  SearchView.swift
 //  Ventori
 //
 //  Created by Proyash Saha on 2021-10-26.
@@ -148,8 +148,8 @@ struct SearchView: View {
                 if searchText != "" || !searchedItem.isEmpty {
                     List {
                         ForEach(searchText == "" ? searchedItem : items.filter { $0.name!.lowercased().contains(searchText.lowercased()) }) { item in
-                            NavigationLink(destination: DetailView(item: item, tag: "search")) {
-                                Text(item.name!)
+                            NavigationLink(destination: DetailView(item: item, tag: "search", indexOfItem: items.firstIndex(of: item) ?? -1)) {
+                                ItemListRow(item: item)
                             }
                             .alert(isPresented: self.$showDeleteAlert) {
                                 Alert(title: Text("Do you want to delete this Item?"),

@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		FC123A4227B0C60B009432E2 /* ImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC123A4127B0C60B009432E2 /* ImageView.swift */; };
+		FC123A4427B0DA47009432E2 /* ItemListRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC123A4327B0DA47009432E2 /* ItemListRow.swift */; };
 		FC648205274CAA2E00AB0597 /* CategoryController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC648204274CAA2E00AB0597 /* CategoryController.swift */; };
 		FC7A32F82728B5D7003FDABB /* VentoriApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC7A32F72728B5D7003FDABB /* VentoriApp.swift */; };
 		FC7A32FC2728B5D8003FDABB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FC7A32FB2728B5D8003FDABB /* Assets.xcassets */; };
@@ -17,12 +19,11 @@
 		FC7A332A2728B835003FDABB /* ImagePickerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC7A33292728B835003FDABB /* ImagePickerController.swift */; };
 		FC7A332C2728B84F003FDABB /* ItemController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC7A332B2728B84F003FDABB /* ItemController.swift */; };
 		FC7A33302728B925003FDABB /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC7A332F2728B925003FDABB /* HomeView.swift */; };
-		FC7A33322728B943003FDABB /* AddView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC7A33312728B943003FDABB /* AddView.swift */; };
+		FC7A33322728B943003FDABB /* AddUpdateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC7A33312728B943003FDABB /* AddUpdateView.swift */; };
 		FC7A33342728B96E003FDABB /* DetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC7A33332728B96E003FDABB /* DetailView.swift */; };
 		FC7A33362728B989003FDABB /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC7A33352728B989003FDABB /* SearchView.swift */; };
 		FC7A33382728B9AE003FDABB /* StatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC7A33372728B9AE003FDABB /* StatView.swift */; };
 		FC7A333A2728B9CA003FDABB /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC7A33392728B9CA003FDABB /* SettingsView.swift */; };
-		FC7A333C2728B9E5003FDABB /* EditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC7A333B2728B9E5003FDABB /* EditView.swift */; };
 		FC7A333E2728B9FD003FDABB /* CameraButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC7A333D2728B9FD003FDABB /* CameraButton.swift */; };
 		FC7A33402728BA16003FDABB /* BarCodeScanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC7A333F2728BA16003FDABB /* BarCodeScanner.swift */; };
 		FC7A33422728BA2D003FDABB /* BackButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC7A33412728BA2D003FDABB /* BackButton.swift */; };
@@ -32,6 +33,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		FC123A4127B0C60B009432E2 /* ImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageView.swift; sourceTree = "<group>"; };
+		FC123A4327B0DA47009432E2 /* ItemListRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemListRow.swift; sourceTree = "<group>"; };
 		FC648204274CAA2E00AB0597 /* CategoryController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryController.swift; sourceTree = "<group>"; };
 		FC7A32F42728B5D7003FDABB /* Ventori.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Ventori.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FC7A32F72728B5D7003FDABB /* VentoriApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VentoriApp.swift; sourceTree = "<group>"; };
@@ -43,12 +46,11 @@
 		FC7A33292728B835003FDABB /* ImagePickerController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePickerController.swift; sourceTree = "<group>"; };
 		FC7A332B2728B84F003FDABB /* ItemController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemController.swift; sourceTree = "<group>"; };
 		FC7A332F2728B925003FDABB /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
-		FC7A33312728B943003FDABB /* AddView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddView.swift; sourceTree = "<group>"; };
+		FC7A33312728B943003FDABB /* AddUpdateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddUpdateView.swift; sourceTree = "<group>"; };
 		FC7A33332728B96E003FDABB /* DetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailView.swift; sourceTree = "<group>"; };
 		FC7A33352728B989003FDABB /* SearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchView.swift; sourceTree = "<group>"; };
 		FC7A33372728B9AE003FDABB /* StatView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatView.swift; sourceTree = "<group>"; };
 		FC7A33392728B9CA003FDABB /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
-		FC7A333B2728B9E5003FDABB /* EditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditView.swift; sourceTree = "<group>"; };
 		FC7A333D2728B9FD003FDABB /* CameraButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraButton.swift; sourceTree = "<group>"; };
 		FC7A333F2728BA16003FDABB /* BarCodeScanner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarCodeScanner.swift; sourceTree = "<group>"; };
 		FC7A33412728BA2D003FDABB /* BackButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackButton.swift; sourceTree = "<group>"; };
@@ -118,14 +120,14 @@
 			isa = PBXGroup;
 			children = (
 				FC7A332F2728B925003FDABB /* HomeView.swift */,
-				FC7A33312728B943003FDABB /* AddView.swift */,
+				FC7A33312728B943003FDABB /* AddUpdateView.swift */,
 				FC7A33332728B96E003FDABB /* DetailView.swift */,
 				FC7A33352728B989003FDABB /* SearchView.swift */,
 				FC7A33372728B9AE003FDABB /* StatView.swift */,
 				FC7A33392728B9CA003FDABB /* SettingsView.swift */,
-				FC7A333B2728B9E5003FDABB /* EditView.swift */,
 				FCA0644D27332479000C6D24 /* CategoryView.swift */,
 				FC993E042755D629001DA233 /* AddCategoryView.swift */,
+				FC123A4127B0C60B009432E2 /* ImageView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -146,6 +148,7 @@
 		FC834286272917EB00E5DB3B /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				FC123A4327B0DA47009432E2 /* ItemListRow.swift */,
 				FC7A33412728BA2D003FDABB /* BackButton.swift */,
 				FC7A333D2728B9FD003FDABB /* CameraButton.swift */,
 				FC7A333F2728BA16003FDABB /* BarCodeScanner.swift */,
@@ -223,18 +226,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FC123A4227B0C60B009432E2 /* ImageView.swift in Sources */,
 				FC7A33262728B7D3003FDABB /* BarCodeScannerController.swift in Sources */,
-				FC7A333C2728B9E5003FDABB /* EditView.swift in Sources */,
 				FC7A33402728BA16003FDABB /* BarCodeScanner.swift in Sources */,
 				FC648205274CAA2E00AB0597 /* CategoryController.swift in Sources */,
 				FC7A33362728B989003FDABB /* SearchView.swift in Sources */,
 				FC7A33302728B925003FDABB /* HomeView.swift in Sources */,
 				FC7A32F82728B5D7003FDABB /* VentoriApp.swift in Sources */,
+				FC123A4427B0DA47009432E2 /* ItemListRow.swift in Sources */,
 				FC7A333A2728B9CA003FDABB /* SettingsView.swift in Sources */,
 				FC7A333E2728B9FD003FDABB /* CameraButton.swift in Sources */,
 				FC7A33422728BA2D003FDABB /* BackButton.swift in Sources */,
 				FC993E052755D629001DA233 /* AddCategoryView.swift in Sources */,
-				FC7A33322728B943003FDABB /* AddView.swift in Sources */,
+				FC7A33322728B943003FDABB /* AddUpdateView.swift in Sources */,
 				FC7A332A2728B835003FDABB /* ImagePickerController.swift in Sources */,
 				FC993E072755E006001DA233 /* KeyboardResponderController.swift in Sources */,
 				FC7A33242728B6D9003FDABB /* Ventori.xcdatamodeld in Sources */,

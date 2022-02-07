@@ -1,5 +1,5 @@
 //
-//  StatScreen.swift
+//  StatView.swift
 //  Ventori
 //
 //  Created by Proyash Saha on 2021-10-26.

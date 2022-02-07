@@ -1,5 +1,5 @@
 //
-//  AddCategory.swift
+//  AddCategoryView.swift
 //  Ventori
 //
 //  Created by Proyash Saha on 2021-11-29.

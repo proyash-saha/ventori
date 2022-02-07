@@ -43,25 +43,25 @@ struct Item: Identifiable, Hashable {
         self.notes = notes
     }
     
-    mutating func newCount(_ num: Int){
-        self.count = num
-    }
-    
-    mutating func addToCount(_ num: Int){
-        self.count += num
-    }
-    
-    mutating func updateSold(_ num: Int){
-        self.sold += num
-        self.count -= num
-        self.profit += (self.sellingPrice - self.costPrice) * Double(num)
-    }
-    
-    mutating func updateCostPrice(_ price: Double){
-        self.costPrice = price
-    }
-    
-    mutating func updateSellingPrice(_ price: Double){
-        self.sellingPrice = price
-    }
+//    mutating func newCount(_ num: Int){
+//        self.count = num
+//    }
+//
+//    mutating func addToCount(_ num: Int){
+//        self.count += num
+//    }
+//
+//    mutating func updateSold(_ num: Int){
+//        self.sold += num
+//        self.count -= num
+//        self.profit += (self.sellingPrice - self.costPrice) * Double(num)
+//    }
+//
+//    mutating func updateCostPrice(_ price: Double){
+//        self.costPrice = price
+//    }
+//
+//    mutating func updateSellingPrice(_ price: Double){
+//        self.sellingPrice = price
+//    }
 }

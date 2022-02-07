@@ -16,7 +16,7 @@ struct CameraButton: View {
             self.showActionSheet.toggle()
         }) {
             RoundedRectangle(cornerRadius: 10)
-                .frame(width: 36, height: 36, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
+                .frame(width: 40, height: 40, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
                 .foregroundColor(Color.init(red: 0.8, green: 0.8, blue: 0.8))
                 .overlay(
                     Image(systemName: "camera.fill")
