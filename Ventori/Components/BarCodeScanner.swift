@@ -129,7 +129,7 @@ extension View {
     func buttonStyle() -> some View {
         self.frame(width: 70, height: 20)
             .padding(10)
-            .background(Color.green)
+            .background(Theme.mainColor)
             .foregroundColor(Color.white)
             .clipShape(RoundedRectangle(cornerRadius: 5))
     }

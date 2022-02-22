@@ -17,7 +17,7 @@ struct ItemListRow: View {
         HStack {
             if item.tagColorIndex != -1 {
                 RoundedRectangle(cornerRadius: 50)
-                    .frame(width: 10, height: 30)
+                    .frame(width: 10)
                     .foregroundColor(tagColors[Int(item.tagColorIndex)])
             }
             else {
@@ -26,6 +26,10 @@ struct ItemListRow: View {
                     .hidden()
             }
             Text(item.name!)
+                .font(.system(size: 20, weight: .semibold))
+            Spacer()
+            Text("\(item.count)")
+                .padding(.trailing, 20)
         }
     }
 }

@@ -15,7 +15,7 @@ struct VentoriApp: App {
     let persistenceController = PersistenceController.shared
     
     init() {
-        UIView.appearance().tintColor = UIColor(Color.green)
+        UIView.appearance().tintColor = UIColor(Theme.mainColor)
         UITextView.appearance().backgroundColor = .clear
     }
 
@@ -31,4 +31,16 @@ struct VentoriApp: App {
             persistenceController.save()
         }
     }
+}
+
+extension Color {
+  init(_ hex: UInt, alpha: Double = 1) {
+    self.init(
+      .sRGB,
+      red: Double((hex >> 16) & 0xFF) / 255,
+      green: Double((hex >> 8) & 0xFF) / 255,
+      blue: Double(hex & 0xFF) / 255,
+      opacity: alpha
+    )
+  }
 }

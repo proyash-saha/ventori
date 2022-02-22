@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		FC123A4227B0C60B009432E2 /* ImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC123A4127B0C60B009432E2 /* ImageView.swift */; };
 		FC123A4427B0DA47009432E2 /* ItemListRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC123A4327B0DA47009432E2 /* ItemListRow.swift */; };
+		FC15484127C4472D00065F1D /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC15484027C4472D00065F1D /* Theme.swift */; };
 		FC648205274CAA2E00AB0597 /* CategoryController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC648204274CAA2E00AB0597 /* CategoryController.swift */; };
 		FC7A32F82728B5D7003FDABB /* VentoriApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC7A32F72728B5D7003FDABB /* VentoriApp.swift */; };
 		FC7A32FC2728B5D8003FDABB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FC7A32FB2728B5D8003FDABB /* Assets.xcassets */; };
@@ -27,6 +28,7 @@
 		FC7A333E2728B9FD003FDABB /* CameraButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC7A333D2728B9FD003FDABB /* CameraButton.swift */; };
 		FC7A33402728BA16003FDABB /* BarCodeScanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC7A333F2728BA16003FDABB /* BarCodeScanner.swift */; };
 		FC7A33422728BA2D003FDABB /* BackButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC7A33412728BA2D003FDABB /* BackButton.swift */; };
+		FC82334B27C2E5E100B3FC04 /* ExpiryDateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC82334A27C2E5E100B3FC04 /* ExpiryDateView.swift */; };
 		FC993E052755D629001DA233 /* AddCategoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC993E042755D629001DA233 /* AddCategoryView.swift */; };
 		FC993E072755E006001DA233 /* KeyboardResponderController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC993E062755E006001DA233 /* KeyboardResponderController.swift */; };
 		FCA0644E27332479000C6D24 /* CategoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCA0644D27332479000C6D24 /* CategoryView.swift */; };
@@ -35,6 +37,7 @@
 /* Begin PBXFileReference section */
 		FC123A4127B0C60B009432E2 /* ImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageView.swift; sourceTree = "<group>"; };
 		FC123A4327B0DA47009432E2 /* ItemListRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemListRow.swift; sourceTree = "<group>"; };
+		FC15484027C4472D00065F1D /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
 		FC648204274CAA2E00AB0597 /* CategoryController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryController.swift; sourceTree = "<group>"; };
 		FC7A32F42728B5D7003FDABB /* Ventori.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Ventori.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FC7A32F72728B5D7003FDABB /* VentoriApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VentoriApp.swift; sourceTree = "<group>"; };
@@ -54,6 +57,7 @@
 		FC7A333D2728B9FD003FDABB /* CameraButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraButton.swift; sourceTree = "<group>"; };
 		FC7A333F2728BA16003FDABB /* BarCodeScanner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarCodeScanner.swift; sourceTree = "<group>"; };
 		FC7A33412728BA2D003FDABB /* BackButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackButton.swift; sourceTree = "<group>"; };
+		FC82334A27C2E5E100B3FC04 /* ExpiryDateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpiryDateView.swift; sourceTree = "<group>"; };
 		FC993E042755D629001DA233 /* AddCategoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCategoryView.swift; sourceTree = "<group>"; };
 		FC993E062755E006001DA233 /* KeyboardResponderController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardResponderController.swift; sourceTree = "<group>"; };
 		FCA0644D27332479000C6D24 /* CategoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryView.swift; sourceTree = "<group>"; };
@@ -128,6 +132,7 @@
 				FCA0644D27332479000C6D24 /* CategoryView.swift */,
 				FC993E042755D629001DA233 /* AddCategoryView.swift */,
 				FC123A4127B0C60B009432E2 /* ImageView.swift */,
+				FC82334A27C2E5E100B3FC04 /* ExpiryDateView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -141,6 +146,7 @@
 				FC7A332B2728B84F003FDABB /* ItemController.swift */,
 				FC648204274CAA2E00AB0597 /* CategoryController.swift */,
 				FC993E062755E006001DA233 /* KeyboardResponderController.swift */,
+				FC15484027C4472D00065F1D /* Theme.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -229,6 +235,7 @@
 				FC123A4227B0C60B009432E2 /* ImageView.swift in Sources */,
 				FC7A33262728B7D3003FDABB /* BarCodeScannerController.swift in Sources */,
 				FC7A33402728BA16003FDABB /* BarCodeScanner.swift in Sources */,
+				FC15484127C4472D00065F1D /* Theme.swift in Sources */,
 				FC648205274CAA2E00AB0597 /* CategoryController.swift in Sources */,
 				FC7A33362728B989003FDABB /* SearchView.swift in Sources */,
 				FC7A33302728B925003FDABB /* HomeView.swift in Sources */,
@@ -243,6 +250,7 @@
 				FC993E072755E006001DA233 /* KeyboardResponderController.swift in Sources */,
 				FC7A33242728B6D9003FDABB /* Ventori.xcdatamodeld in Sources */,
 				FC7A33382728B9AE003FDABB /* StatView.swift in Sources */,
+				FC82334B27C2E5E100B3FC04 /* ExpiryDateView.swift in Sources */,
 				FC7A332C2728B84F003FDABB /* ItemController.swift in Sources */,
 				FC7A33282728B802003FDABB /* PersistenceController.swift in Sources */,
 				FC7A33342728B96E003FDABB /* DetailView.swift in Sources */,
@@ -384,7 +392,6 @@
 				INFOPLIST_KEY_NSCameraUsageDescription = "Ventori needs access to you phone camera to scan a barcode";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -415,7 +422,6 @@
 				INFOPLIST_KEY_NSCameraUsageDescription = "Ventori needs access to you phone camera to scan a barcode";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (

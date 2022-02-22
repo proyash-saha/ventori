@@ -35,7 +35,7 @@ struct CategoryView: View {
                         Spacer()
                         if seclectedCategory == "None" {
                             Image(systemName: "checkmark")
-                                .foregroundColor(Color.green)
+                                .foregroundColor(Theme.mainColor)
                         }
                     }
                 }
@@ -52,7 +52,7 @@ struct CategoryView: View {
                             Spacer()
                             if seclectedCategory == categories[index].category! {
                                 Image(systemName: "checkmark")
-                                    .foregroundColor(Color.green)
+                                    .foregroundColor(Theme.mainColor)
                             }
                         }
                     }

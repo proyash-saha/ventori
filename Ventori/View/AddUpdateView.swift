@@ -40,7 +40,6 @@ struct AddUpdateView: View {
     @State private var showBarCodeScanner = false
     @State private var itemIndex: Int = -1
     
-    @State private var dateComponent = DateComponents()
     @State private var emptyFields: [String] = []
     @State private var tempString: String = ""
     @State private var onAppearCount: Int = 0
@@ -146,10 +145,21 @@ struct AddUpdateView: View {
                         }
                     }
                     Divider()
-                    HStack {
-                        Text("Expiry Date")
-                            .labelStyle1()
-                        DatePicker("", selection: $expiryDate, in: Calendar.current.date(byAdding: dateComponent, to: Date())!..., displayedComponents: [.date])
+                    NavigationLink(destination: ExpiryDateView(expiryDate: $expiryDate)) {
+                        HStack {
+                            Text("Expiry Date")
+                                .labelStyle1()
+                            Spacer()
+                            if(expiryDate.formatted() != Date().formatted()) {
+                                Text("\(expiryDate, format: .dateTime.day().month().year())")
+                                    .foregroundColor(colorScheme == .light ? Color.black : Color.white)
+                            }
+                            else {
+                                Text("N/A")
+                                    .foregroundColor(colorScheme == .light ? Color.black : Color.white)
+                            }
+                            Image(systemName: "chevron.forward")
+                        }
                     }
                     Divider()
                     HStack {
@@ -184,7 +194,7 @@ struct AddUpdateView: View {
                             .frame(minHeight: 80, maxHeight: 80)
                             .padding(6)
                             .background(Color(.secondarySystemBackground))
-                            .overlay(RoundedRectangle(cornerRadius: 5).stroke(Color.green, lineWidth: 0.5))
+                            .overlay(RoundedRectangle(cornerRadius: 5).stroke(Theme.mainColor, lineWidth: 0.5))
                     }
                     Spacer()
                 }
@@ -216,7 +226,7 @@ struct AddUpdateView: View {
                     } label: {
                         Text(purpose)
                             .padding(EdgeInsets(top: 5, leading: 10, bottom: 5, trailing: 10))
-                            .background(Color.green)
+                            .background(Theme.mainColor)
                             .foregroundColor(Color.white)
                             .clipShape(RoundedRectangle(cornerRadius: 5))
                             .fixedSize(horizontal: true, vertical: false)
@@ -254,7 +264,6 @@ struct AddUpdateView: View {
                 ImagePickerController(selectedImage: self.$image, sourceType: .photoLibrary)
             }
             .onAppear {
-                dateComponent.day = 2
                 
                 if purpose == "Update" && onAppearCount == 0{
                     itemToBeUpdated = items[indexOfItem]
@@ -282,7 +291,6 @@ struct AddUpdateView: View {
                 Alert(title: Text("Barcode \"\(scannedCode)\" is already assigned to an item."), dismissButton: .default(Text("OK")))
             }
         }
-        .accentColor(.green)
     }
 
     
@@ -449,7 +457,7 @@ extension View {
             .frame(height: 30.0)
             .padding(6)
             .background(Color(.secondarySystemBackground))
-            .overlay(RoundedRectangle(cornerRadius: 5).stroke(Color.green, lineWidth: 0.5))
+            .overlay(RoundedRectangle(cornerRadius: 5).stroke(Theme.mainColor, lineWidth: 0.5))
     }
 }
 

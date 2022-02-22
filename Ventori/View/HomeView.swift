@@ -51,7 +51,9 @@ struct HomeView: View {
                         }
                         .onDelete(perform: deleteItem)
                     }
+                    //.listStyle(PlainListStyle())
                     .navigationTitle(Text("Ventori"))
+                    .environment(\.defaultMinListRowHeight, 60)
                     .toolbar {
                         ToolbarItemGroup(placement: .navigationBarLeading) {
                             NavigationLink(destination: SettingsView()) {
@@ -96,7 +98,7 @@ struct HomeView: View {
             }
         }
         .navigationViewStyle(StackNavigationViewStyle())
-        .accentColor(Color.green)
+        .accentColor(Theme.mainColor)
     }
     
     

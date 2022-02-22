@@ -186,6 +186,7 @@ struct SearchView: View {
                         }
                         .onDelete(perform: deleteItem)
                     }
+                    .environment(\.defaultMinListRowHeight, 60)
                 }
         }
         .navigationTitle(Text("Search"))

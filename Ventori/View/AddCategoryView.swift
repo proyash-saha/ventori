@@ -46,7 +46,7 @@ struct AddCategoryView: View {
                 } label: {
                     Text("Add")
                         .padding(EdgeInsets(top: 5, leading: 10, bottom: 5, trailing: 10))
-                        .background(Color.green)
+                        .background(Theme.mainColor)
                         .foregroundColor(Color.white)
                         .clipShape(RoundedRectangle(cornerRadius: 5))
                         .fixedSize(horizontal: true, vertical: false)

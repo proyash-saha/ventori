@@ -10,27 +10,51 @@ import SwiftUI
 struct ImageView: View {
     
     var image: UIImage
-    @GestureState var scale: CGFloat = 1.0
+    @State var scale = 1.0
+    @State private var lastScale = 1.0
+    private let minScale = 1.0
+    private let maxScale = 1.0
     
+    var magnification: some Gesture {
+        MagnificationGesture()
+            .onChanged { state in
+                if state > 1 {
+                    adjustScale(from: state)
+                }
+            }
+            .onEnded { state in
+                withAnimation {
+                    validateScaleLimits()
+                }
+                lastScale = 1.0
+            }
+    }
+
     var body: some View {
-        VStack {
-            Image(uiImage: image)
-                .resizable()
-                .scaledToFill()
-                .frame(width: UIScreen.main.bounds.width, height: 300)
-                .scaleEffect(scale)
-                .gesture(MagnificationGesture()
-                    .updating($scale, body: { (value, scale, trans) in
-                        if value >= 1 {
-                            scale = value.magnitude
-                        }
-                    })
-            )
-        }
-        .navigationTitle(Text(""))
-        .navigationBarTitleDisplayMode(.inline)
-        .navigationBarBackButtonHidden(true)
-        .navigationBarItems(leading: BackButton())
+        Image(uiImage: image)
+            .resizable()
+            .aspectRatio(contentMode: .fit)
+            .scaleEffect(scale)
+            .gesture(magnification)
+    }
+    
+    func adjustScale(from state: MagnificationGesture.Value) {
+        let delta = state / lastScale
+        scale *= delta
+        lastScale = state
+    }
+    
+    func getMinimumScaleAllowed() -> CGFloat {
+        return max(scale, minScale)
+    }
+    
+    func getMaximumScaleAllowed() -> CGFloat {
+        return min(scale, maxScale)
+    }
+    
+    func validateScaleLimits() {
+        scale = getMinimumScaleAllowed()
+        scale = getMaximumScaleAllowed()
     }
 }
 
